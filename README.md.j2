@@ -9,15 +9,37 @@ The purpose of this role is to install and configure {{ role_name }} on your sys
 
 If you find issues, please register them in [GitHub](https://github.com/csteel/ansible-role-{{ role_name }}/issues)
 
+## Testing
+
 To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+
+### quick start
+
+#### set desired molecule environment variable(s)
+
+For example to test again To change the current LTS version of ubuntu you would do this:
+
+```shell
+export namespace=robertdebock
+export image=ubuntu
+export tag=rolling # latest
 ```
-# Docker test:
+
+#### Run your tests
+
+```shell
+molecule create
+molecule converge
+molecule test # creates, converges and deletes
+```
+
+### Molecule requirements
+
+Install any Molecule requirements, for example:
+
+```shell
 pip install molecule ara
-molecule test
-# Vagrant tests
-molecule test --scenario-name vagrant
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
 
 Context
 --------
@@ -93,13 +115,28 @@ Sample roles/requirements.yml: (install with `ansible-galaxy install -r roles/re
 - name: csteel.{{ role_name }}
 ```
 
-License
--------
+## License(s), prior art, inspiration and provenance
 
-Apache License, Version 2.0
+### ansible-role-skeleton
 
-Author Information
-------------------
-Christopher Steel
+Apache License, Version 2.0, Copyright 2019 Robert de Bock (robert@meinit.nl)
 
-Role created using an ansible-role-skeleton version created by [Robert de Bock](https://robertdebock.nl/) <robert@meinit.nl>
+### Previous incarnation of ansible-role-{{ role_name}}
+
+The MIT License (MIT) Copyright (c) 2015 Igor Mukhin <igor.mukhin@gmail.com>
+
+### The creation of this version of ansible-role-{{ role_name }}
+
+A role skeleton generated using a customized version of the excellent
+[ansible-role-skeleton](https://github.com/robertdebock/ansible-role-skeleton)
+created by [Robert de Bock](https://robertdebock.nl/).
+
+The generated skeleton was then blended with a clone this ansible role:
+[github/author/ansible-role-{{ role_name }}]((https://github.com/author/ansible-role-skeleton))
+
+This was then merged with the generated Robert de Bock style skeleton and modified
+in order to support additional Linux flavours, current Ansible development and
+testing methods as well as other edits and additions to enhance functionality
+and clairity.
+
+Christopher Steel, March 21st, 2020

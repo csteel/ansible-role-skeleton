@@ -3,6 +3,7 @@
   hosts: all
   become: yes
   gather_facts: yes
-
+  # vars:
   roles:
-    - role: ansible-role-{{ role_name }}
+    - ansible-role-{{ role_name }}
+
